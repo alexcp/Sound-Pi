@@ -13,3 +13,8 @@ configure do
   set :public_folder, Proc.new { File.join(root, "public") }
   set :views, Proc.new { File.join(root, "views") }
 end
+
+get "/" do
+  @songs = Song.all
+  erb :index
+end
