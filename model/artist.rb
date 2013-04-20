@@ -1,7 +1,10 @@
 class Artist < Sequel::Model
-  attr_accessor :name
   one_to_many :albums
   plugin :validation_helpers
+
+  def raise_on_save_failure
+    false
+  end
 
   def validate
     super

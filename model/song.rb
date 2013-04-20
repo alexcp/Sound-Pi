@@ -1,11 +1,14 @@
 class Song < Sequel::Model
-  attr_accessor :name, :album_id, :length, :path, :genre
-  many_to_one :album, eager: [:artist]
+  many_to_one :album
   plugin :validation_helpers
+
+  def raise_on_save_failure
+    false
+  end
 
   def validate
     super
-    validates_presence [:name, :album_id, :length, :path]
+    validates_presence [:name, :album, :path]
     validates_unique :name, :path
   end
 end

@@ -5,6 +5,8 @@ require_relative 'model/song'
 require_relative 'model/album'
 require_relative 'model/artist'
 
+MUSIC_DIR = "/home/alex/Music"
+
 configure do
   enable :sessions
   set :root, File.dirname(__FILE__)
