@@ -1,8 +1,5 @@
 require 'rubygems'
 require 'sinatra'
- 
-set :environment, :production
-
 require './assets'
 require './app'
  

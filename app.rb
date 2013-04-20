@@ -18,3 +18,13 @@ get "/" do
   @songs = Song.all
   erb :index
 end
+
+get "/artists/:artist_id" do
+  @songs = Artist.find(id: params[:artist_id]).albums.map{|album| album.songs}.flatten
+  erb :index
+end
+
+get "/albums/:album_id" do
+  @songs = Album.find(id: params[:album_id]).songs
+  erb :index
+end

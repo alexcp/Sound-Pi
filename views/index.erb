@@ -12,27 +12,53 @@
   </head>
   <body>
 
-    <div class="container-fluid">
+    <div class="container">
 
-      <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="song_list">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Artist</th>
-            <th>Album</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @songs.each do |song| %>
+      <header class="jumbotron subhead" id="overview">
+      <div class="row-fluid">
+        <div class="span8">
+          <h1>Sound PI</h1>
+          <p class="lead">Raspberry Pi sound system.</p>
+        </div>
+        <div class="span4">
+          <h6>Now Playing:</h6>
+        </div>
+      </div>
+      <div class="subnav">
+        <ul class="nav nav-pills">
+          <li><a href="/">Songs</a></li>
+          <li><a href="#">Playlists</a></li>
+          <li><a href="#">New Playlist</a></li>
+        </ul>
+      </div>
+      </header>
+
+
+
+      <div class="row-fluid">
+
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="song_list">
+          <thead>
             <tr>
-              <td><%= song.name %></td>
-              <td><%= song.album.artist.name %></td>
-              <td><%= song.album.name %></td>
+              <th>Name</th>
+              <th>Artist</th>
+              <th>Album</th>
+              <th>#</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @songs.each do |song| %>
+              <tr>
+                <td><%= song.name %></td>
+                <td><a href="/artists/<%= song.album.artist.id%>"><%= song.album.artist.name %></a></td>
+                <td><a href="/albums/<%= song.album.id%>"><%= song.album.name %></a></td>
+                <td><%= song.tracknum %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
+      </div>
     </div>
 
     <script src="/assets/app.js"></script>
@@ -40,6 +66,7 @@
       $(document).ready(function(){
         $('#song_list').dataTable({
           "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+          "aaSorting": [[ 1, "asc" ],[ 2, "asc" ],[ 3, "asc" ]],
           "iDisplayLength": 25
         });
       });

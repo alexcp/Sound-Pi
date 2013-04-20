@@ -1,5 +1,5 @@
 class Artist < Sequel::Model
-  one_to_many :albums, eager: [:song]
+  one_to_many :albums, eager: [:songs]
   plugin :validation_helpers
 
   def raise_on_save_failure
