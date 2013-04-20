@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Song do
   it "should create a new song" do
-    song = Song.create name: "test"
-    song.name.should be_nil 
+    album = Album.create name: "test_album", artist: Artist.create(name:"artist")
+    song = Song.create name: "test", album: album
+    song.album.should eq(album)
   end
 end

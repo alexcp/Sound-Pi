@@ -2,6 +2,8 @@ require 'sinatra'
 require 'json'
 require_relative 'config/db'
 require_relative 'model/song'
+require_relative 'model/album'
+require_relative 'model/artist'
 
 configure do
   enable :sessions
