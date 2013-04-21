@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf8">
-    <title>Sound PI</title>
+    <title>Sound Pi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sound PI">
+    <meta name="description" content="Sound Pi">
     <link href="/assets/app.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -17,7 +17,7 @@
       <header class="jumbotron subhead" id="overview">
       <div class="row-fluid">
         <div class="span8">
-          <h1>Sound PI</h1>
+          <h1>Sound Pi</h1>
           <p class="lead">Raspberry Pi sound system.</p>
         </div>
         <div class="span4">
@@ -44,6 +44,7 @@
               <th>Artist</th>
               <th>Album</th>
               <th>#</th>
+              <th>Genre</th>
             </tr>
           </thead>
           <tbody>
@@ -53,6 +54,7 @@
                 <td><a href="/artists/<%= song.album.artist.id%>"><%= song.album.artist.name %></a></td>
                 <td><a href="/albums/<%= song.album.id%>"><%= song.album.name %></a></td>
                 <td><%= song.tracknum %></td>
+                <td><%= song.genre %></td>
               </tr>
             <% end %>
           </tbody>
