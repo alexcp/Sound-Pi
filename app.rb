@@ -4,8 +4,11 @@ require_relative 'config/db'
 require_relative 'model/song'
 require_relative 'model/album'
 require_relative 'model/artist'
+require_relative 'player'
 
 MUSIC_DIR = "/home/alex/Music"
+
+PLAYER = Player.new
 
 configure do
   enable :sessions
@@ -27,4 +30,10 @@ end
 get "/albums/:album_id" do
   @songs = Album.find(id: params[:album_id]).songs
   erb :index
+end
+
+post "/play/:song_id" do
+  PLAYER << Song.find(id: params[:song_id])
+  PLAYER.start
+  200
 end
