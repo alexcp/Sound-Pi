@@ -16,12 +16,21 @@
 
       <header class="jumbotron subhead" id="overview">
       <div class="row-fluid">
-        <div class="span8">
+        <div class="span6">
           <h1>Sound Pi</h1>
           <p class="lead">Raspberry Pi sound system.</p>
         </div>
-        <div class="span4">
+        <div class="span6">
           <h6>Now Playing:</h6>
+          <ul class="queue">
+
+          </ul>
+          <div class="btn-group">
+            <a id="prev" href="#"class="btn"><i class="icon-white icon-backward"> </i> </a>
+            <a id="play" href="#"class="btn"><i class="icon-white icon-play"> </i> </a>
+            <a id="stop" href="#"class="btn"><i class="icon-white icon-stop"> </i> </a>
+            <a id="next" href="#"class="btn"><i class="icon-white icon-forward"> </i> </a>
+          </div>
         </div>
       </div>
       <div class="subnav">
@@ -50,7 +59,7 @@
           <tbody>
             <% @songs.each do |song| %>
               <tr>
-                <td><%= song.name %></td>
+                <td><a class="enqueue" href="<%= song.id %>"><%= song.name %> <i class="pull-right icon-plus"></i></a></td>
                 <td><a href="/artists/<%= song.album.artist.id%>"><%= song.album.artist.name %></a></td>
                 <td><a href="/albums/<%= song.album.id%>"><%= song.album.name %></a></td>
                 <td><%= song.tracknum %></td>

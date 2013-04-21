@@ -37,14 +37,13 @@ class Player
 
   def stop
     @playing = false
+    Process.kill "INT", @pid+2
   end
 
   private
 
   def play song
     @now_playing = song
-    command = %{mpg123 "#{song.path}"}
-    command.untaint
-    system command
+    @pid = spawn "mpg123 \"#{song.path}\""
   end
 end

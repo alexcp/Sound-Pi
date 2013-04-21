@@ -32,8 +32,20 @@ get "/albums/:album_id" do
   erb :index
 end
 
-post "/play/:song_id" do
+get "/start" do
+  PLAYER.start
+end
+
+get "/stop" do
+  PLAYER.stop
+end
+
+post "/queue" do
   PLAYER << Song.find(id: params[:song_id])
   PLAYER.start
   200
+end
+
+get "/queue" do
+  PLAYER.queue
 end
